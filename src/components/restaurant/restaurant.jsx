@@ -10,7 +10,7 @@ export const Restaurant = ({ restaurant }) => {
   return (
     <div>
       <h2>{name}</h2>
-      {menu.length && (
+      {Boolean(menu.length) && (
         <>
           <h3>Menu</h3>
           <ul>
@@ -23,7 +23,7 @@ export const Restaurant = ({ restaurant }) => {
           </ul>
         </>
       )}
-      {reviews.length && (
+      {Boolean(reviews.length) && (
         <>
           <h3>Reviews</h3>
           <ul>

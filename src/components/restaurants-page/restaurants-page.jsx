@@ -3,25 +3,32 @@ import { restaurants } from "../../constants/mock";
 import { Restaurant } from "../restaurant/restaurant";
 
 export const RestaurantsPage = () => {
-  const [activeTabIndex, setActiveTabIndex] = useState(0);
+  const [activeTabId, setActiveTabId] = useState(restaurants[0].id);
 
   return (
     <div>
-      {restaurants.map((restaurant, index) => (
-        <button
-          key={restaurant.id}
-          onClick={() => {
-            if (index !== activeTabIndex) {
-              setActiveTabIndex(index);
-            }
-          }}
-        >
-          {restaurant.name}
-        </button>
-      ))}
+      {restaurants.map((restaurant) => {
+        const { id, name } = restaurant;
+        return (
+          <button
+            key={id}
+            onClick={() => {
+              if (id !== activeTabId) {
+                setActiveTabId(id);
+              }
+            }}
+          >
+            {name}
+          </button>
+        );
+      })}
       <Restaurant
-        restaurant={restaurants[activeTabIndex]}
-        key={restaurants[activeTabIndex].id}
+        restaurant={
+          restaurants.filter((item) => {
+            return item.id === activeTabId;
+          })[0]
+        }
+        key={activeTabId}
       />
     </div>
   );
