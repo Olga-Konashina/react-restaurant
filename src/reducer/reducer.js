@@ -12,18 +12,18 @@ export function Reducer(state, action) {
   switch (type) {
     case SET_NAME:
       return {
-        ...INITIAL_FORM,
-        name: payload.name,
+        ...state,
+        name: payload,
       };
     case SET_TEXT:
       return {
         ...state,
-        text: payload.text,
+        text: payload,
       };
     case SET_RATING:
       return {
         ...state,
-        rating: payload.rating,
+        rating: payload,
       };
     case SET_INITIAL:
       return INITIAL_FORM;

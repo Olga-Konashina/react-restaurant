@@ -7,13 +7,31 @@ import {
   SET_TEXT,
 } from "../../../constants/constants";
 import { Reducer } from "../../../reducer/reducer";
+import { Counter } from "../../counter/counter";
 
 export const ReviewForm = () => {
   const [state, dispatch] = useReducer(Reducer, INITIAL_FORM);
 
+  const increment = () => {
+    if (state.rating < 5) {
+      dispatch({ type: SET_RATING, payload: state.rating + 1 });
+    }
+  };
+
+  const decrement = () => {
+    if (state.rating > 1) {
+      dispatch({ type: SET_RATING, payload: state.rating - 1 });
+    }
+  };
+
   return (
     <>
-      <form onSubmit={() => e.preventDefault()}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          console.log(state);
+        }}
+      >
         <div>
           <label>name</label>
           <input
@@ -34,20 +52,17 @@ export const ReviewForm = () => {
         </div>
         <div>
           <label>rating</label>
-          <input
+          <Counter
             value={state.rating}
-            onChange={(event) => {
-              dispatch({ type: SET_RATING, payload: event.target.value });
-            }}
+            increment={increment}
+            decrement={decrement}
           />
         </div>
+        <>
+          <button type="submit">Submit</button>
+          <button onClick={() => dispatch({ type: SET_INITIAL })}>Clear</button>
+        </>
       </form>
-      <>
-        <button type="submit">Submit</button>
-        <button onClick={() => dispatch({ type: SET_INITIAL, payload: null })}>
-          Clear
-        </button>
-      </>
     </>
   );
 };

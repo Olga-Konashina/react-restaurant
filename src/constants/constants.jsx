@@ -6,5 +6,5 @@ export const SET_INITIAL = "SET_INITIAL";
 export const INITIAL_FORM = {
   name: "",
   text: "",
-  rating: "",
+  rating: 1,
 };
