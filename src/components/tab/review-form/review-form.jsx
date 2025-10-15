@@ -25,44 +25,42 @@ export const ReviewForm = () => {
   };
 
   return (
-    <>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          console.log(state);
-        }}
-      >
-        <div>
-          <label>name</label>
-          <input
-            value={state.name}
-            onChange={(event) => {
-              dispatch({ type: SET_NAME, payload: event.target.value });
-            }}
-          />
-        </div>
-        <div>
-          <label>text</label>
-          <input
-            value={state.text}
-            onChange={(event) => {
-              dispatch({ type: SET_TEXT, payload: event.target.value });
-            }}
-          />
-        </div>
-        <div>
-          <label>rating</label>
-          <Counter
-            value={state.rating}
-            increment={increment}
-            decrement={decrement}
-          />
-        </div>
-        <>
-          <button type="submit">Submit</button>
-          <button onClick={() => dispatch({ type: SET_INITIAL })}>Clear</button>
-        </>
-      </form>
-    </>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        console.log(state);
+      }}
+    >
+      <div>
+        <label>name</label>
+        <input
+          value={state.name}
+          onChange={(event) => {
+            dispatch({ type: SET_NAME, payload: event.target.value });
+          }}
+        />
+      </div>
+      <div>
+        <label>text</label>
+        <input
+          value={state.text}
+          onChange={(event) => {
+            dispatch({ type: SET_TEXT, payload: event.target.value });
+          }}
+        />
+      </div>
+      <div>
+        <label>rating</label>
+        <Counter
+          value={state.rating}
+          increment={increment}
+          decrement={decrement}
+        />
+      </div>
+      <>
+        <button type="submit">Submit</button>
+        <button onClick={() => dispatch({ type: SET_INITIAL })}>Clear</button>
+      </>
+    </form>
   );
 };
