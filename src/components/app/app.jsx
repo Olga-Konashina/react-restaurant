@@ -3,8 +3,10 @@ import { RestaurantsPage } from "../restaurants-page/restaurants-page";
 
 export const App = () => {
   return (
-    <Layout>
-      <RestaurantsPage />
-    </Layout>
+    <>
+      <Layout>
+        <RestaurantsPage />
+      </Layout>
+    </>
   );
 };
