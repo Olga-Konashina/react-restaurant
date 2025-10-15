@@ -1,0 +1,15 @@
+.hStyle {
+    margin: 0 0 0.5rem 0;
+    color: #1d3557;
+}
+
+.ulStyle {
+    list-style-type: disc;
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.liStyle {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}

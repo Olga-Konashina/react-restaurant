@@ -5,9 +5,10 @@ import {
   SET_NAME,
   SET_RATING,
   SET_TEXT,
-} from "../../../constants/constants";
-import { Reducer } from "../../../reducer/reducer";
-import { Counter } from "../../counter/counter";
+} from "../../constants/constants";
+import { Reducer } from "../../reducer/reducer";
+import { Counter } from "../counter/counter";
+import styles from "./review-form.module.css";
 
 export const ReviewForm = () => {
   const [state, dispatch] = useReducer(Reducer, INITIAL_FORM);
@@ -26,6 +27,7 @@ export const ReviewForm = () => {
 
   return (
     <form
+      className={styles.formStyle}
       onSubmit={(e) => {
         e.preventDefault();
         console.log(state);

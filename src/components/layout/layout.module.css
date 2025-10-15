@@ -1,0 +1,17 @@
+.header {
+    background-color: #1d3557;
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.footer {
+    margin-top: 2rem;
+    background-color: #1d3557;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    font-weight: 600;
+}
