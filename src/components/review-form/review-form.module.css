@@ -2,7 +2,7 @@
     background-color: #e0e0e0;
     padding: 1rem 1.5rem 1rem 1.5rem;
     border-radius: 8px;
-    max-width: 400px;
+    max-width: 500px;
     margin-top: 1rem;
 
     div {
@@ -17,7 +17,7 @@
     }
 
     input {
-        width: 100%;
+        width: 96%;
         padding: 0.4rem 0.5rem;
         border: 1px solid #ccc;
         border-radius: 4px;
