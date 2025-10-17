@@ -1,0 +1,6 @@
+.span {
+    min-width: 20px;
+    text-align: center;
+    display: inline-block;
+    font-weight: 600;
+}

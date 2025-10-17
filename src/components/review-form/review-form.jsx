@@ -5,9 +5,11 @@ import {
   SET_NAME,
   SET_RATING,
   SET_TEXT,
-} from "../../../constants/constants";
-import { Reducer } from "../../../reducer/reducer";
-import { Counter } from "../../counter/counter";
+} from "../../constants/constants";
+import { Reducer } from "../../reducer/reducer";
+import { Counter } from "../counter/counter";
+import styles from "./review-form.module.css";
+import { Button } from "../button/button";
 
 export const ReviewForm = () => {
   const [state, dispatch] = useReducer(Reducer, INITIAL_FORM);
@@ -26,14 +28,16 @@ export const ReviewForm = () => {
 
   return (
     <form
+      className={styles.form}
       onSubmit={(e) => {
         e.preventDefault();
         console.log(state);
       }}
     >
       <div>
-        <label>name</label>
+        <label className={styles.label}>name</label>
         <input
+          className={styles.input}
           value={state.name}
           onChange={(event) => {
             dispatch({ type: SET_NAME, payload: event.target.value });
@@ -41,8 +45,9 @@ export const ReviewForm = () => {
         />
       </div>
       <div>
-        <label>text</label>
+        <label className={styles.label}>text</label>
         <input
+          className={styles.input}
           value={state.text}
           onChange={(event) => {
             dispatch({ type: SET_TEXT, payload: event.target.value });
@@ -50,17 +55,17 @@ export const ReviewForm = () => {
         />
       </div>
       <div>
-        <label>rating</label>
+        <label className={styles.label}>rating</label>
         <Counter
           value={state.rating}
           increment={increment}
           decrement={decrement}
         />
       </div>
-      <>
-        <button type="submit">Submit</button>
-        <button onClick={() => dispatch({ type: SET_INITIAL })}>Clear</button>
-      </>
+      <div className={styles.buttonPanel}>
+        <Button title="Submit" />
+        <Button title="Clear" onClick={() => dispatch({ type: SET_INITIAL })} />
+      </div>
     </form>
   );
 };

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./progress-bar.module.css";
 
 export const ProgressBar = () => {
   const [scrollPercent, setScrollPercent] = useState(0);
@@ -18,26 +19,13 @@ export const ProgressBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const containerStyle = {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "5px",
-    backgroundColor: "fff",
-    zIndex: 9999,
-  };
-
-  const progressStyle = {
-    height: "100%",
+  const progress = {
     width: `${scrollPercent}%`,
-    backgroundColor: "red",
-    transition: "width 0.25s ease-out",
   };
 
   return (
-    <div style={containerStyle}>
-      <div style={progressStyle} />
+    <div className={styles.container}>
+      <div className={styles.progress} style={progress} />
     </div>
   );
 };

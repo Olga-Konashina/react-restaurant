@@ -1,0 +1,20 @@
+.tab {
+    margin: 0.5rem 0.5rem 1rem 0.5rem;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #457b9d;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tab:disabled {
+    background-color: #a8dadc;
+    cursor: not-allowed;
+}
+
+.tab:not(:disabled):hover {
+    background-color: #a8dadc;
+}
