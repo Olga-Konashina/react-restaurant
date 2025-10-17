@@ -19,13 +19,13 @@ export const ProgressBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const progressStyle = {
+  const progress = {
     width: `${scrollPercent}%`,
   };
 
   return (
-    <div className={styles.containerStyle}>
-      <div className={styles.progressStyle} style={progressStyle} />
+    <div className={styles.container}>
+      <div className={styles.progress} style={progress} />
     </div>
   );
 };

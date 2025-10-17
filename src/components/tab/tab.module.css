@@ -1,4 +1,4 @@
-.tabStyle {
+.tab {
     margin: 0.5rem 0.5rem 1rem 0.5rem;
     padding: 0.5rem 1.2rem;
     font-size: 1rem;
@@ -10,11 +10,11 @@
     transition: background-color 0.3s ease;
 }
 
-.tabStyle:disabled {
+.tab:disabled {
     background-color: #a8dadc;
     cursor: not-allowed;
 }
 
-.tabStyle:not(:disabled):hover {
+.tab:not(:disabled):hover {
     background-color: #a8dadc;
 }

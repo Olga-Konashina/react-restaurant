@@ -1,21 +1,4 @@
-.buttonStyle {
-    background-color: #f1faee;
-    border: 1px solid #457b9d;
-    color: #457b9d;
-    font-weight: bold;
-    width: 28px;
-    height: 28px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 0 0.3rem;
-    transition: background-color 0.3s ease;
-}
-
-.buttonStyle:hover {
-    background-color: #a8dadc;
-}
-
-.spanStyle {
+.span {
     min-width: 20px;
     text-align: center;
     display: inline-block;

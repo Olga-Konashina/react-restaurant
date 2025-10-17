@@ -11,7 +11,7 @@ export const Restaurant = ({ name, menu, reviews }) => {
 
   return (
     <div>
-      <h2 className={styles.hStyle}>{name}</h2>
+      <h2 className={styles.h}>{name}</h2>
       {Boolean(menu.length) && <Menu menu={menu} />}
       {Boolean(reviews.length) && <Reviews reviews={reviews} />}
       <ReviewForm />

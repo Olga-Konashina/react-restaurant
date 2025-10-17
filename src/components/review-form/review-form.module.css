@@ -1,43 +1,28 @@
-.formStyle {
+.form {
     background-color: #e0e0e0;
     padding: 1rem 1.5rem 1rem 1.5rem;
     border-radius: 8px;
     max-width: 500px;
     margin-top: 1rem;
-
-    div {
-      margin-bottom: 0.8rem;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 0.3rem;
-        font-weight: 600;
-        color: #1d3557;
-    }
-
-    input {
-        width: 96%;
-        padding: 0.4rem 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 1rem;
-        outline-color: #457b9d;
-    }
-
-    button[type="submit"], button:not([type]) {
-        padding: 0.5rem 1rem;
-        font-weight: 600;
-        border-radius: 6px;
-        border: none;
-        cursor: pointer;
-        margin-right: 0.5rem;
-        background-color: #457b9d;
-        color: white;
-        transition: background-color 0.3s ease;
-    }
-
-    button[type="submit"]:hover, button:not([type]):hover {
-        background-color: #1d3557;
-    }
 }
+
+.input {
+    width: 96%;
+    padding: 0.4rem 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline-color: #457b9d;
+}
+
+.label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    color: #1d3557;
+}
+
+.buttonPanel {
+    margin-top: 0.8rem;
+}
+
