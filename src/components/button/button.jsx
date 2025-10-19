@@ -1,13 +1,24 @@
+import { useContext } from "react";
 import styles from "./button.module.css";
+import { ThemeContext } from "../theme-provider";
+import classNames from "classnames";
 
 export const Button = ({
   title,
-  onclick,
+  onClick,
   disabled,
-  className = "formButton",
+  className = "commonButton",
 }) => {
+  const { theme } = useContext(ThemeContext);
   return (
-    <button className={styles[className]} onClick={onclick} disabled={disabled}>
+    <button
+      className={classNames(className, {
+        [styles.dark]: theme === "dark",
+        [styles.light]: theme === "light",
+      })}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {title}
     </button>
   );

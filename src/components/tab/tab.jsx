@@ -1,8 +1,5 @@
-import styles from "./tab.module.css";
+import { Button } from "../button/button";
+
 export const Tab = ({ title, onClick, isActive }) => {
-  return (
-    <button className={styles.tab} onClick={onClick} disabled={isActive}>
-      {title}
-    </button>
-  );
+  return <Button title={title} onClick={onClick} disabled={isActive} />;
 };
