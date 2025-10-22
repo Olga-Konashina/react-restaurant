@@ -13,7 +13,7 @@ export const Dish = ({ name, id }) => {
   return (
     <li className={styles.liStyle} key={id}>
       {name}
-      {user && <DishCounter />}
+      {user && <DishCounter id={id} />}
     </li>
   );
 };
