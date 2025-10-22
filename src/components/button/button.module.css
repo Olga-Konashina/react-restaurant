@@ -1,32 +1,25 @@
-.counterButton {
-    background-color: #f1faee;
-    border: 1px solid #457b9d;
-    color: #457b9d;
-    font-weight: bold;
-    width: 28px;
-    height: 28px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 0 0.3rem;
-    transition: background-color 0.3s ease;
+.dark {
+      background-color: #457b9d;
 }
 
-.counterButton:hover {
+.dark:hover {
+  background-color: #1d3557;
+}
+
+.light {
+  background-color: #a8dadc;
+}
+
+.light:hover {
+    backdarkground-color: #457b9d;
+}
+
+.dark:disabled {
     background-color: #a8dadc;
+    cursor: not-allowed;
 }
 
-.formButton{
-    padding: 0.5rem 1rem;
-    font-weight: 600;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    margin-right: 0.5rem;
-    background-color: #457b9d;
-    color: white;
-    transition: background-color 0.3s ease;
+.light:disabled {
+  background-color: #87a3a4;
 }
 
-.formButton:hover {
-     background-color: #1d3557;
-}

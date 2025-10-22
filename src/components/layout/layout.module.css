@@ -15,3 +15,11 @@
     padding: 1rem 0;
     font-weight: 600;
 }
+
+.span {
+    min-width: 20px;
+    text-align: center;
+    display: inline-block;
+    font-weight: 600;
+    margin-right: 0.5rem;
+}

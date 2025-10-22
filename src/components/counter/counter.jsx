@@ -4,9 +4,9 @@ import styles from "./counter.module.css";
 export const Counter = ({ value, increment, decrement }) => {
   return (
     <div>
-      <Button title="+" onclick={increment} className="counterButton" />
+      <Button title="+" onClick={increment} className="counterButton" />
       <span className={styles.span}>{value}</span>
-      <Button title="-" onclick={decrement} className="counterButton" />
+      <Button title="-" onClick={decrement} className="counterButton" />
     </div>
   );
 };

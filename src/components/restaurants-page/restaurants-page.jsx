@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { restaurants } from "../../constants/mock";
 import { Restaurant } from "../restaurant/restaurant";
-import { Tab } from "../tab/tab";
+import styles from "./restaurant-page.module.css";
+import { Button } from "../button/button";
 
 export const RestaurantsPage = () => {
   const [activeRestaurantId, setActiveRestaurantId] = useState(
@@ -13,25 +14,29 @@ export const RestaurantsPage = () => {
   );
 
   return (
-    <div key="RestaurantsPage">
-      {restaurants.map(({ id, name }) => (
-        <Tab
-          key={id}
-          title={name}
-          isActive={id === activeRestaurantId}
-          onClick={() => {
-            if (id !== activeRestaurantId) {
-              setActiveRestaurantId(id);
-            }
-          }}
+    <>
+      <div key="RestaurantsPage">
+        <div className={styles.tabPanel}>
+          {restaurants.map(({ id, name }) => (
+            <Button
+              key={id}
+              title={name}
+              disabled={id === activeRestaurantId}
+              onClick={() => {
+                if (id !== activeRestaurantId) {
+                  setActiveRestaurantId(id);
+                }
+              }}
+            />
+          ))}
+        </div>
+        <Restaurant
+          name={activeRestaurant.name}
+          menu={activeRestaurant.menu}
+          reviews={activeRestaurant.reviews}
+          key={activeRestaurantId}
         />
-      ))}
-      <Restaurant
-        name={activeRestaurant.name}
-        menu={activeRestaurant.menu}
-        reviews={activeRestaurant.reviews}
-        key={activeRestaurantId}
-      />
-    </div>
+      </div>
+    </>
   );
 };

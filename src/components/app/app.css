@@ -4,3 +4,26 @@ body {
   background: #fafafa;
   color: #333;
 }
+
+.commonButton{
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.counterButton {
+    border: 1px solid #457b9d;
+    color: white;
+    font-weight: bold;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 0.3rem;
+    transition: background-color 0.3s ease;
+}

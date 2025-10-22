@@ -1,9 +1,11 @@
-import { Counter } from "../counter/counter";
+import { useContext } from "react";
 import { DishCounter } from "../dish-counter/dish-counter";
 
 import styles from "../restaurant/restaurant.module.css";
+import { UserContext } from "../user-provider";
 
 export const Menu = ({ menu }) => {
+  const { user } = useContext(UserContext);
   return (
     <>
       <h3 className={styles.hStyle}>Menu</h3>
@@ -11,7 +13,7 @@ export const Menu = ({ menu }) => {
         {menu.map((item) => (
           <li className={styles.liStyle} key={item.id}>
             {item.name}
-            <DishCounter />
+            {user && <DishCounter />}
           </li>
         ))}
       </ul>
