@@ -11,6 +11,15 @@
 }
 
 .light:hover {
-    background-color: #457b9d;
+    backdarkground-color: #457b9d;
+}
+
+.dark:disabled {
+    background-color: #a8dadc;
+    cursor: not-allowed;
+}
+
+.light:disabled {
+  background-color: #87a3a4;
 }
 
