@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { Counter } from "../counter/counter";
 import { Menu } from "../menu/menu";
 import { ReviewForm } from "../review-form/review-form";
 import { Reviews } from "../reviews/reviews";
