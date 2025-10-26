@@ -1,0 +1,10 @@
+.link {
+    padding: 4px;
+    text-decoration: none;
+    color: #1d3557;
+}
+
+.active {
+    pointer-events: none;
+    opacity: 0.5;
+}
