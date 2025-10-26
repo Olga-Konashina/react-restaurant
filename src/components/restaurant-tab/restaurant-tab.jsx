@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../../redux/entities/restaurants/slice";
-import { Button } from "../button/button";
+import { Link } from "../link/link";
 
-export const RestaurantTab = ({ id, onClick, disabled }) => {
+export const RestaurantTab = ({ id }) => {
   const restaurant = useSelector((state) => selectRestaurantById(state, id));
 
   if (!restaurant) {
@@ -11,5 +11,5 @@ export const RestaurantTab = ({ id, onClick, disabled }) => {
 
   const { name } = restaurant;
 
-  return <Button title={name} onClick={onClick} disabled={disabled} />;
+  return <Link to={`/restaurants/${id}`}>{name}</Link>;
 };

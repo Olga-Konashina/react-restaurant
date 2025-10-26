@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
+import { Link } from "../link/link";
 import { selectDishById } from "../../redux/entities/dishes/slice";
-import { Dish } from "./dish";
 
-export const DishContainer = ({ id }) => {
+export const DishItem = ({ id }) => {
   const dish = useSelector((state) => selectDishById(state, id));
 
   if (!dish) {
@@ -11,5 +11,9 @@ export const DishContainer = ({ id }) => {
 
   const { name } = dish;
 
-  return <Dish name={name} id={id} />;
+  return (
+    <li className="listItem" key={id}>
+      <Link to={`/dish/${id}`}>{name}</Link>
+    </li>
+  );
 };
