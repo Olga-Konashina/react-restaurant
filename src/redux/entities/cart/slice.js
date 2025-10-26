@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 export const cartSlice = createSlice({
   name: "cart",
@@ -20,12 +20,19 @@ export const cartSlice = createSlice({
     },
   },
   selectors: {
-    selectCartItemsIds: (cartState) => Object.keys(cartState),
     selectCartItemById: (cartState, id) => cartState[id],
   },
 });
 
-export const { selectCartItemsIds, selectCartItemById } =
+const selectCartSlice = (state) => state[cartSlice.name];
+export const selectCartItemsIds = createSelector(
+  [selectCartSlice],
+  (cartState) => {
+    return Object.keys(cartState);
+  }
+);
+
+export const { selectCartItemById } =
   cartSlice.selectors;
 
 export const { addItemToCart, removeItemFromCart } = cartSlice.actions;
