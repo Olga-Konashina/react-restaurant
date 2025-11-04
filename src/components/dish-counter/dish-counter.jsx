@@ -6,19 +6,21 @@ import {
   selectCartItemById,
 } from "../../redux/entities/cart/slice";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
 
-export const DishCounter = ({ id }) => {
+export const DishCounter = () => {
+  const { dishId } = useParams();
   const dispatch = useDispatch();
-  const value = useSelector((state) => selectCartItemById(state, id)) || 0;
+  const value = useSelector((state) => selectCartItemById(state, dishId)) || 0;
 
   const increment = useCallback(
-    () => dispatch(addItemToCart(id)),
-    [dispatch, id]
+    () => dispatch(addItemToCart(dishId)),
+    [dispatch, dishId]
   );
 
   const decrement = useCallback(
-    () => dispatch(removeItemFromCart(id)),
-    [dispatch, id]
+    () => dispatch(removeItemFromCart(dishId)),
+    [dispatch, dishId]
   );
 
   return <Counter value={value} increment={increment} decrement={decrement} />;

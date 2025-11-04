@@ -4,8 +4,9 @@ import { ProgressBar } from "../progress-bar/progress-bar";
 import styles from "./layout.module.css";
 import { UserContext } from "../user-provider";
 import { ThemeContext } from "../theme-provider";
+import { Outlet } from "react-router";
 
-export const Layout = ({ children }) => {
+export const Layout = () => {
   const { user, toggleUser } = useContext(UserContext);
   const { toggleTheme } = useContext(ThemeContext);
   return (
@@ -16,7 +17,7 @@ export const Layout = ({ children }) => {
         {user && <span className={styles.span}>{user}</span>}
         <Button title={user ? "Выйти" : "Войти"} onClick={toggleUser} />
       </header>
-      {children}
+      <Outlet />
       <footer className={styles.footer}>FOOTER</footer>
     </div>
   );
