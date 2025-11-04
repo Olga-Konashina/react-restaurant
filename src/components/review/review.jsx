@@ -1,11 +1,7 @@
-export const Review = ({ text, id }) => {
+export const Review = ({ text }) => {
   if (!text) {
     return null;
   }
 
-  return (
-    <li className="listItem" key={id}>
-      {text}
-    </li>
-  );
+  return <li className="listItem">{text}</li>;
 };

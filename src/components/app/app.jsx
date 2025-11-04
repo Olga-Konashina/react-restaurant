@@ -20,11 +20,7 @@ export const App = () => {
           <BrowserRouter>
             <Routes>
               <Route element={<Layout />}>
-                <Route
-                  path="/"
-                  index
-                  element={<div>Restaurant home page</div>}
-                />
+                <Route index element={<div>Restaurant home page</div>} />
                 <Route path="/restaurants" element={<RestaurantsLayout />}>
                   <Route path=":restaurantId" element={<RestaurantPage />}>
                     <Route index element={<RedirectToMenu />} />

@@ -12,7 +12,7 @@ export const DishItem = ({ id }) => {
   const { name } = dish;
 
   return (
-    <li className="listItem" key={id}>
+    <li className="listItem">
       <Link to={`/dish/${id}`}>{name}</Link>
     </li>
   );
