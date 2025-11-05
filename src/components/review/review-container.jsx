@@ -9,7 +9,7 @@ export const ReviewContainer = ({ id }) => {
     return null;
   }
 
-  const { text } = review;
+  const { text, userId } = review;
 
-  return <Review text={text} id={id} />;
+  return <Review text={text} id={id} userId={userId} />;
 };

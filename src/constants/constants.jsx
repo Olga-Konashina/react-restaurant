@@ -8,3 +8,8 @@ export const INITIAL_FORM = {
   text: "",
   rating: 1,
 };
+
+export const IDLE_STATUS = "idle";
+export const FULFILLED_STATUS = "fulfilled";
+export const PENDING_STATUS = "pending";
+export const REJECTED_STATUS = "rejected";
