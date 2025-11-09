@@ -3,12 +3,17 @@ import { ReviewForm } from "../review-form/review-form";
 import { Reviews } from "../reviews/reviews";
 import { useParams } from "react-router";
 import { AuthContext } from "../auth-provider";
-import { useGetReviewsByRestaurantIdQuery } from "../../redux/services/api";
+import {
+  useAddReviewMutation,
+  useGetReviewsByRestaurantIdQuery,
+} from "../../redux/services/api";
+import { INITIAL_FORM } from "../../constants/constants";
 
 export const ReviewPage = () => {
   const { auth } = use(AuthContext);
   const { isAuthorized } = auth;
   const { restaurantId } = useParams();
+  const [addReview] = useAddReviewMutation();
 
   const { isError, isLoading, data } =
     useGetReviewsByRestaurantIdQuery(restaurantId);
@@ -25,10 +30,22 @@ export const ReviewPage = () => {
     return null;
   }
 
+  const handleFormSubmit = (text, rating) => {
+    addReview({
+      restaurantId,
+      review: { text, rating, userId: auth.userId },
+    });
+  };
+
   return (
     <>
       {Boolean(data.length) && <Reviews reviews={data} />}
-      {isAuthorized && <ReviewForm id={restaurantId} userId={auth.userId} />}
+      {isAuthorized && (
+        <ReviewForm
+          initialState={INITIAL_FORM}
+          handleFormSubmit={handleFormSubmit}
+        />
+      )}
     </>
   );
 };

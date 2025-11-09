@@ -1,25 +1,21 @@
 import { useReducer } from "react";
-import {
-  INITIAL_FORM,
-  SET_INITIAL,
-  SET_NAME,
-  SET_RATING,
-  SET_TEXT,
-} from "../../constants/constants";
+import { SET_INITIAL, SET_RATING, SET_TEXT } from "../../constants/constants";
 import { Reducer } from "../../reducer/reducer";
 import { Counter } from "../counter/counter";
 import styles from "./review-form.module.css";
 import { Button } from "../button/button";
-import { useAddReviewMutation } from "../../redux/services/api";
 
-export const ReviewForm = ({ id, userId }) => {
-  const [state, dispatch] = useReducer(Reducer, INITIAL_FORM);
+export const ReviewForm = ({
+  initialState,
+  handleFormSubmit,
+  handleFormCancel,
+}) => {
+  const [state, dispatch] = useReducer(Reducer, initialState);
+  const isEdit = handleFormCancel;
 
-  const [addReview, { isLoading }] = useAddReviewMutation();
-
-  const handleFormSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    addReview({ restaurantId: id, review: { ...state, userId } });
+    handleFormSubmit(state.text, state.rating);
   };
 
   const increment = () => {
@@ -35,7 +31,7 @@ export const ReviewForm = ({ id, userId }) => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleFormSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div>
         <label className={styles.label}>text</label>
         <input
@@ -56,7 +52,12 @@ export const ReviewForm = ({ id, userId }) => {
       </div>
       <div className={styles.buttonPanel}>
         <Button title="Submit" type="submit" />
-        <Button title="Clear" onClick={() => dispatch({ type: SET_INITIAL })} />
+        <Button
+          title={isEdit ? "Cancel" : "Clear"}
+          onClick={
+            isEdit ? handleFormCancel : () => dispatch({ type: SET_INITIAL })
+          }
+        />
       </div>
     </form>
   );
