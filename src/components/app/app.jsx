@@ -1,7 +1,7 @@
 import { Provider } from "react-redux";
 import { Layout } from "../layout/layout";
 import { ThemeProvider } from "../theme-provider/theme-provider";
-import { UserProvider } from "../user-provider/user-provider";
+import { AuthContextProvider } from "../auth-provider/auth-provider";
 import "./app.css";
 import { store } from "../../redux/store";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
@@ -16,7 +16,7 @@ export const App = () => {
   return (
     <Provider store={store}>
       <ThemeProvider>
-        <UserProvider>
+        <AuthContextProvider>
           <BrowserRouter>
             <Routes>
               <Route element={<Layout />}>
@@ -33,7 +33,7 @@ export const App = () => {
               </Route>
             </Routes>
           </BrowserRouter>
-        </UserProvider>
+        </AuthContextProvider>
       </ThemeProvider>
     </Provider>
   );

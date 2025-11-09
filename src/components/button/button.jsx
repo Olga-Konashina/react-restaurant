@@ -8,6 +8,7 @@ export const Button = ({
   onClick,
   disabled,
   className = "commonButton",
+  type = "button",
 }) => {
   const { theme } = useContext(ThemeContext);
   return (
@@ -18,6 +19,7 @@ export const Button = ({
       })}
       onClick={onClick}
       disabled={disabled}
+      type={type}
     >
       {title}
     </button>

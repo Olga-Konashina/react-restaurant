@@ -5,8 +5,8 @@ export const Reviews = ({ reviews }) => {
     <>
       <h3 className="h">Reviews</h3>
       <ul className="listItem">
-        {reviews.map((id) => (
-          <ReviewContainer id={id} key={id} />
+        {reviews.map((item) => (
+          <ReviewContainer review={item} key={item.id} />
         ))}
       </ul>
     </>

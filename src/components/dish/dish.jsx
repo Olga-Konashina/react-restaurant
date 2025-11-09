@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { use } from "react";
 import { DishCounter } from "../dish-counter/dish-counter";
-import { UserContext } from "../user-provider";
+import { AuthContext } from "../auth-provider";
 
 export const Dish = ({ name, price, ingredients }) => {
-  const { user } = useContext(UserContext);
+  const { auth } = use(AuthContext);
+
+  const { isAuthorized } = auth;
 
   if (!name) {
     return null;
@@ -20,7 +22,7 @@ export const Dish = ({ name, price, ingredients }) => {
           </li>
         ))}
       </ul>
-      {user && <DishCounter />}
+      {isAuthorized && <DishCounter />}
     </>
   );
 };

@@ -10,9 +10,17 @@ import { Reducer } from "../../reducer/reducer";
 import { Counter } from "../counter/counter";
 import styles from "./review-form.module.css";
 import { Button } from "../button/button";
+import { useAddReviewMutation } from "../../redux/services/api";
 
-export const ReviewForm = () => {
+export const ReviewForm = ({ id, userId }) => {
   const [state, dispatch] = useReducer(Reducer, INITIAL_FORM);
+
+  const [addReview, { isLoading }] = useAddReviewMutation();
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    addReview({ restaurantId: id, review: { ...state, userId } });
+  };
 
   const increment = () => {
     if (state.rating < 5) {
@@ -27,23 +35,7 @@ export const ReviewForm = () => {
   };
 
   return (
-    <form
-      className={styles.form}
-      onSubmit={(e) => {
-        e.preventDefault();
-        console.log(state);
-      }}
-    >
-      <div>
-        <label className={styles.label}>name</label>
-        <input
-          className={styles.input}
-          value={state.name}
-          onChange={(event) => {
-            dispatch({ type: SET_NAME, payload: event.target.value });
-          }}
-        />
-      </div>
+    <form className={styles.form} onSubmit={handleFormSubmit}>
       <div>
         <label className={styles.label}>text</label>
         <input
@@ -63,7 +55,7 @@ export const ReviewForm = () => {
         />
       </div>
       <div className={styles.buttonPanel}>
-        <Button title="Submit" />
+        <Button title="Submit" type="submit" />
         <Button title="Clear" onClick={() => dispatch({ type: SET_INITIAL })} />
       </div>
     </form>
