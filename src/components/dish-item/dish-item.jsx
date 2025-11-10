@@ -2,14 +2,12 @@ import { useSelector } from "react-redux";
 import { Link } from "../link/link";
 import { selectDishById } from "../../redux/entities/dishes/slice";
 
-export const DishItem = ({ id }) => {
-  const dish = useSelector((state) => selectDishById(state, id));
-
-  if (!dish) {
+export const DishItem = ({ item }) => {
+  if (!item) {
     return null;
   }
 
-  const { name } = dish;
+  const { id, name } = item;
 
   return (
     <li className="listItem">

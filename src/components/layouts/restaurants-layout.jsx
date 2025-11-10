@@ -1,36 +1,27 @@
 import { Outlet } from "react-router";
 import { RestaurantTab } from "../restaurant-tab/restaurant-tab";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectRequestStatus,
-  selectRestaurantIds,
-} from "../../redux/entities/restaurants/slice";
-import { getRestaurants } from "../../redux/entities/restaurants/get-restaurants";
-import { useEffect } from "react";
-import { PENDING_STATUS, REJECTED_STATUS } from "../../constants/constants";
+import { useGetRestaurantsQuery } from "../../redux/services/api";
 
 export const RestaurantsLayout = () => {
-  const dispatch = useDispatch();
-  const requestStatus = useSelector(selectRequestStatus);
-  const restaurantIds = useSelector(selectRestaurantIds);
+  const { isError, isLoading, data } = useGetRestaurantsQuery();
 
-  useEffect(() => {
-    dispatch(getRestaurants());
-  }, [dispatch]);
-
-  if (requestStatus === PENDING_STATUS) {
+  if (isLoading) {
     return "loading...";
   }
 
-  if (requestStatus === REJECTED_STATUS) {
-    return "some error";
+  if (isError) {
+    return "ERROR";
+  }
+
+  if (!data) {
+    return null;
   }
 
   return (
     <>
       <div>
-        {restaurantIds.map((id) => (
-          <RestaurantTab key={id} id={id} />
+        {data.map((item) => (
+          <RestaurantTab key={item.id} restaurant={item} />
         ))}
       </div>
       <Outlet />

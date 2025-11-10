@@ -1,33 +1,26 @@
-import { useSelector } from "react-redux";
 import { Outlet, useParams } from "react-router";
 import { MenuTab } from "../menu-tab/menu-tab";
 import { ReviewTab } from "../review-tab/review-tab";
-import { selectRestaurantById } from "../../redux/entities/restaurants/slice";
-import { getRestaurantById } from "../../redux/entities/restaurants/get-restaurant-by-id";
-import { useRequest } from "../../hooks/use-request";
-import { PENDING_STATUS, REJECTED_STATUS } from "../../constants/constants";
+import { useGetRestaurantByIdQuery } from "../../redux/services/api";
 
 export const RestaurantPage = () => {
   const { restaurantId } = useParams();
-  const restaurant = useSelector((state) =>
-    selectRestaurantById(state, restaurantId)
-  );
 
-  const requestStatus = useRequest(getRestaurantById, restaurantId);
+  const { isError, isLoading, data } = useGetRestaurantByIdQuery(restaurantId);
 
-  if (requestStatus === PENDING_STATUS) {
+  if (isLoading) {
     return "loading...";
   }
 
-  if (requestStatus === REJECTED_STATUS) {
+  if (isError) {
     return "error";
   }
 
-  if (!restaurant) {
+  if (!data) {
     return null;
   }
 
-  const { name } = restaurant;
+  const { name } = data;
 
   return (
     <>

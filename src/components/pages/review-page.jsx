@@ -1,49 +1,51 @@
-import { useContext, useEffect } from "react";
+import { use } from "react";
 import { ReviewForm } from "../review-form/review-form";
 import { Reviews } from "../reviews/reviews";
 import { useParams } from "react-router";
-import { UserContext } from "../user-provider";
-import { useDispatch, useSelector } from "react-redux";
-import { selectReviewIds } from "../../redux/entities/reviews/slice";
-import { getReviews } from "../../redux/entities/reviews/get-reviews";
-import { useRequest } from "../../hooks/use-request";
-import { PENDING_STATUS, REJECTED_STATUS } from "../../constants/constants";
-import { getUsers } from "../../redux/entities/users/get-users";
-import { selectRequestStatus } from "../../redux/entities/users/slice";
+import { AuthContext } from "../auth-provider";
+import {
+  useAddReviewMutation,
+  useGetReviewsByRestaurantIdQuery,
+} from "../../redux/services/api";
+import { INITIAL_FORM } from "../../constants/constants";
 
 export const ReviewPage = () => {
-  const { user } = useContext(UserContext);
+  const { auth } = use(AuthContext);
+  const { isAuthorized } = auth;
   const { restaurantId } = useParams();
+  const [addReview] = useAddReviewMutation();
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
+  const { isError, isLoading, data } =
+    useGetReviewsByRestaurantIdQuery(restaurantId);
 
-  const userRequestStatus = useSelector(selectRequestStatus);
-
-  const reviews = useSelector((state) => selectReviewIds(state, restaurantId));
-
-  const requestStatus = useRequest(getReviews, restaurantId);
-
-  if (
-    requestStatus === PENDING_STATUS ||
-    userRequestStatus === PENDING_STATUS
-  ) {
+  if (isLoading) {
     return "loading...";
   }
 
-  if (
-    requestStatus === REJECTED_STATUS ||
-    userRequestStatus === REJECTED_STATUS
-  ) {
+  if (isError) {
     return "error";
   }
 
+  if (!data) {
+    return null;
+  }
+
+  const handleFormSubmit = (text, rating) => {
+    addReview({
+      restaurantId,
+      review: { text, rating, userId: auth.userId },
+    });
+  };
+
   return (
     <>
-      {Boolean(reviews.length) && <Reviews reviews={reviews} />}
-      {user && <ReviewForm />}
+      {Boolean(data.length) && <Reviews reviews={data} />}
+      {isAuthorized && (
+        <ReviewForm
+          initialState={INITIAL_FORM}
+          handleFormSubmit={handleFormSubmit}
+        />
+      )}
     </>
   );
 };
